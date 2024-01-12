@@ -1,0 +1,26 @@
+{% extends 'app1/base.html' %}
+
+{% block body_block %}
+{% load Filter %}
+<h2>My Expenses Manager</h2>
+<table border=5>
+  <thead>
+    <th>Name</th>
+    <th>category</th>
+    <th>Date of Expense</th>
+    <th>Amount</th>
+    <th>updated At</th>
+    <th>created By</th>
+  </thead>
+  {% for y in Expense_list %}
+  <tr>
+    <td>{{k.name}}</td>
+    <td>{{k.category}}</td>
+    <td>{{k.Date_of_Expense}}</td>
+    <td>{{k.Amount}}</td>
+    <td>{{k.updated_at}}</td>
+    <td>{{k.created_by}}</td>
+  </tr>
+  {% endfor %}
+
+</table>

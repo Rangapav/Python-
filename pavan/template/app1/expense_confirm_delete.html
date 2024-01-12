@@ -1,0 +1,71 @@
+
+
+{% block body_block %}
+    <div class="form-container">
+        <h3>Are you confirm want to delete {{expense.name}}</h3>
+        <form method="post" class="expense-form">
+            {{ form.as_p }}
+            {% csrf_token %}
+
+            <div class="form-actions">
+                <input type="submit" value="Delete">
+                <a href="{% url 'Expense'%}" class="cancel-link">Cancel</a>
+            </div>
+        </form>
+    </div>
+
+    <style>
+        body {
+            background-color: #f8f8f8; /* Light background color */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif; /* Use a common font */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Ensure full height */
+        }
+
+        .form-container {
+            width: 50%;
+            padding: 20px;
+            background-color: #fff; /* White background for the form container */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .expense-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-actions {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        input[type="submit"] {
+            padding: 10px;
+            background-color: #4caf50; /* Green color for the submit button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049; /* Darker green color on hover */
+        }
+
+        .cancel-link {
+            text-decoration: none;
+            color: #333; /* Dark text color for the cancel link */
+        }
+
+        .cancel-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+{% endblock %}

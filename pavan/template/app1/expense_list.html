@@ -1,0 +1,132 @@
+{% extends 'app1/base.html' %}
+{% load static %}
+<!-- <link rel="stylesheet" href="{% static "style.css" %}"/> -->
+
+{% block body_block %}
+<style>
+    body {
+        background-color: #f8f8f8; /* Light background color */
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    a {
+        display: block;
+        text-align: right;
+        margin: 20px;
+        text-decoration: none;
+        color: #4caf50; /* Green color for the link */
+    }
+
+    .section-container {
+        background-color: #fff; /* White background for the container */
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        background-color: #fff; /* White background for the table */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd; /* Border color for table rows */
+    }
+
+    th {
+        background-color: #4caf50; /* Green color for table header */
+        color: white;
+    }
+
+    td {
+        background-color: #f9f9f9; /* Light background color for table cells */
+    }
+
+    td:last-child {
+        text-align: center;
+    }
+
+    a.action-link {
+        margin-right: 10px;
+        text-decoration: none;
+        color: #333;
+    }
+
+    #add {
+        text-align: center;
+        padding: 10px;
+        margin: 20px auto;
+        margin-left:450px;
+        background-color:blue;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+        display: inline-block;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #add:hover {
+        background-color: #45a049;
+    }
+
+    #logout {
+        background-color: #f44336;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        display: inline-block;
+        margin-left:550px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #logout:hover {
+        background-color: #d32f2f; /* Darker red on hover */
+    }
+</style>
+
+<div class="section-container">
+    <h2>My Expenses Manager</h2>
+    <table border="10">
+        <thead>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Date of Expense</th>
+            <th>Amount</th>
+            <th>Updated At</th>
+            <th>Created By</th>
+            <th>Actions</th>
+        </thead>
+        {% for k in expense_list %}
+            <tr>
+                <td>{{ k.name }}</td>
+                <td>{{ k.category }}</td>
+                <td>{{ k.Date_of_Expense }}</td>
+                <td>{{ k.Amount }}</td>
+                <td>{{ k.updated_at }}</td>
+                <td>{{ k.created_by }}</td>
+                <td>
+                    <a class="action-link" href="/update/{{ k.pk }}">✏️</a>
+                    <a class="action-link" href="/delete/{{ k.pk }}">🗑️</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="/create" id="add">Add Expenses</a>
+    <a href="{% url 'logout' %}" id="logout">Logout</a>
+</div>
+
+{% endblock %}

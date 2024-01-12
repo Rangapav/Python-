@@ -1,0 +1,120 @@
+<!-- myapp/templates/signup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8; /* Light background color */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .welcome {
+            background-color: #4caf50; /* Green color for the welcome message */
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff; /* Light background color for the form */
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        a {
+            color: #4caf50;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+        .messages {
+           margin: 10px 0;
+           padding: 10px;
+           background-color: #ffcccc;
+          border: 1px solid #ff6666;
+           border-radius: 4px;}
+    </style>
+</head>
+<body>
+
+<div class="welcome">
+    <h2>Welcome to the World of Finance Management</h2>
+    <h3>Sign Up</h3>
+</div>
+<div class="messages">
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+</div>
+<form method="post">
+    {% csrf_token %}
+    <label for="id_first_name">First Name:</label>
+    <input type="text" name="first_name" required>
+    <label for="id_last_name">Last Name:</label>
+    <input type="text" name="last_name" required>
+    <label for="id_email">Email:</label>
+    <input type="email" name="email" required>
+    <label for="id_username">Username:</label>
+    <input type="username" name="username" required>
+    <label for="id_password1">Password:</label>
+    <input type="password" name="password1" required>
+    <label for="id_password2">Confirm Password:</label>
+    <input type="password" name="password2" required>
+
+    <button type="submit">Signup</button>
+</form>
+
+<p>Already have an Account? <a href="{% url 'login' %}">Click Here</a></p>
+
+</body>
+</html>
